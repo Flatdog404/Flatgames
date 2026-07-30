@@ -1,2 +1,2 @@
 # Flatgames
-simple, portable, highly customizable. and essentially unblockable games website
+A simple, portable, highly customizable. and essentially unblockable games website
