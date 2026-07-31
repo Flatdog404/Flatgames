@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+</head>
+<body>
+    <div id="messages" style="white-space: pre-wrap;">Loading messages...</div>
+    <input type="text" id="messageInput" placeholder="Type a message...">
+
+    <script>
+        const displayName = prompt("Enter display name:") || ''
+
+        async function updateMessages() {
+            try {
+                const res = await fetch('/api/messages')
+                const textData = await res.text()
+                document.getElementById('messages').textContent = textData
+            } catch (error) {
+                console.error('Error fetching messages:', error)
+                document.getElementById('messages').textContent = 'Failed to load messages.'
+            }
+        }
+
+        setInterval(updateMessages, 1000)
+        updateMessages()
+
+        document.getElementById('messageInput').addEventListener('keypress', async function(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('messageInput')
+                const text = input.value.trim()
+                if (!text) return
+                try {
+                    await fetch('/api/message', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: displayName, text })
+                    })
+                    input.value = ''
+                    updateMessages()
+                } catch (err) {
+                    console.error('Failed to send message', err)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

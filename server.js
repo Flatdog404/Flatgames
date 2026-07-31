@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const fs = require('fs').promises
+const scanfs = require('fs')
 const { handleMessage } = require('./messageHandler')
 
 const app = express()
@@ -37,4 +38,14 @@ app.post('/api/message', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
+})
+
+scanfs.readdir('./Apps/', (err, files) => {
+  if (err) return console.error('Error scanning files', err)
+
+    const txtFiles = files.filter(file => {
+      return path.extname(file).toLowerCase() === '.html'
+    })
+
+    console.log(txtFiles)
 })
