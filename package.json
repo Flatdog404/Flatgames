@@ -1,0 +1,25 @@
+{
+  "name": "flatgames",
+  "version": "1.0.0",
+  "description": "",
+  "main": "messageHandler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flatdog404/Flatgames.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Flatdog404/Flatgames/issues"
+  },
+  "homepage": "https://github.com/Flatdog404/Flatgames#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

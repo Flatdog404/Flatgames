@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>New Tab</title>
+</head>
+<body>
+  <h1>Flatgames</h1>
+  
+  <h3>Notes:</h3>
+  <div id="notes" style="white-space: pre-wrap;">Loading notes...</div>
+    <h2>FlatApps</h2>
+    <a href="flatchat.html">FlatChat</a>
+    <br>
+
+  <script>
+    fetch('Data/notes.txt')
+      .then(response => response.text())
+      .then(textData => {
+        document.getElementById('notes').textContent = textData
+      })
+      .catch(error => {
+        console.error('Error fetching notes:', error)
+        document.querySelector('p').textContent = 'Failed to load notes.'
+      })
+  </script>
+</body>
+</html>
