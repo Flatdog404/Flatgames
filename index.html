@@ -1,31 +1,40 @@
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>New Tab</title>
+  <title>new tab — flatgames</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <h1>Flatgames</h1>
-  
-  <h3>Notes:</h3>
-  <div id="notes" style="white-space: pre-wrap;">Loading notes...</div>
-    <h2>FlatApps</h2>
-    <a href="flatchat.html">FlatChat</a>
-    <br>
 
-    <h2>Games/Apps</h2>
+  <!-- Header with title and notes -->
+  <header class="main-header">
+    <h1><span class="accent-text">flatgames</span></h1>
+    <p>simple, portable, and unblockable game website.</p>
+  </header>
 
-  <script>
-    fetch('Data/notes.txt')
-      .then(response => response.text())
-      .then(textData => {
-        document.getElementById('notes').textContent = textData
-      })
-      .catch(error => {
-        console.error('Error fetching notes:', error)
-        document.querySelector('p').textContent = 'Failed to load notes.'
-      })
-  </script>
+  <!-- Main layout: side-by-side sections -->
+  <main class="container">
+    
+    <!-- FlatApps section (left sidebar) -->
+    <section id="appsSection" class="apps-section">
+      <h2>flatapps</h2>
+      <a href="/flatchat" class="app-link">flatchat</a>
+    </section>
+
+    <!-- Games/Apps Section (right side — takes most of the screen) -->
+    <section id="gamesSection" class="games-section">
+      <h2>games &amp; apps</h2>
+      <div id="gameGrid" class="game-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Load notes */->
+  <script src="index.js"></script>
+
+  <!-- Dynamically load games from /Apps/ folder -->
+  <script src="apps-loader.js"></script>
+
 </body>
 </html>
