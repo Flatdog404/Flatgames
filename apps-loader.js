@@ -1,7 +1,7 @@
 (async () => {
     try {
         const response = await fetch('/apps');
-        if (!response.ok) throw new Error('Server failed to load apps');
+        if (!response.ok) throw new Error('Failed to load apps');
         const data = await response.json();
 
         const grid = document.getElementById('gameGrid');
@@ -12,7 +12,6 @@
         ).join(' ');
     } catch (err) {
         console.error('Failed to populate apps:', err);
-        const grid = document.getElementById('gameGrid');
-        if (grid) grid.textContent = 'No apps found';
+        document.getElementById('gameGrid').textContent = 'No apps found';
     }
 })();
