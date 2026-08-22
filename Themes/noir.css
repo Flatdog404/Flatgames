@@ -1,38 +1,46 @@
-/* Noir Theme - High Contrast Black/White */
+/* Noir Theme - Editorial monochrome */
 :root {
-  --bg-primary: #050505;
-  --bg-secondary: rgba(255, 255, 255, 0.08);
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #151515;
   --text-primary: #ffffff;
-  --text-secondary: #888888;
-  --accent-color: #ffffff;
-  --accent-glow: rgba(255, 255, 255, 0.4);
-  --border-color: rgba(255, 255, 255, 0.3);
-  --hover-bg: rgba(255, 255, 255, 0.15);
+  --text-secondary: #a2a2a2;
+  --accent-color: #f2d16b;
+  --accent-glow: rgba(242, 209, 107, 0.35);
+  --border-color: #4b4b4b;
+  --hover-bg: #242424;
+  --accent-color-rgb: 255, 255, 255;
+  --font-family: 'Arial Narrow', Arial, sans-serif;
+  --surface-solid: #111111;
+  --panel-background: #111111;
+  --card-background: #191919;
+  --link-background: #101010;
+  --heading-color: #ffffff;
+  --panel-border: #383838;
+  --panel-shadow: 8px 8px 0 #000;
+  --header-background: linear-gradient(180deg, #1c1c1c, #0a0a0a);
+  --orb-background: radial-gradient(circle, rgba(242, 209, 107, 0.1), transparent 68%);
 }
 
 body {
-  font-family: monospace, 'Courier New', Courier, monospace;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0, rgba(255, 255, 255, 0.018) 1px, transparent 1px, transparent 4px), #0a0a0a;
 }
 
-.main-header {
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
-}
-
-.accent-text {
-  color: var(--accent-color);
-  text-shadow: 0 0 20px var(--accent-glow);
+.main-header h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 8px;
 }
 
 .apps-section, .games-section {
-  background: var(--bg-secondary);
+  border: 1px solid #383838;
 }
 
-.app-link:hover, .app-card:hover {
-  background: var(--hover-bg);
+.app-link, .app-card {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 0;
 }
 
-.bg-orb {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+.theme-button, .theme-options {
+  border-radius: 0;
 }

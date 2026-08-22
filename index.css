@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: monospace, 'Courier New', Courier, monospace;
+  font-family: var(--font-family, monospace);
   background-color: var(--bg-primary, #0a0a0a);
   color: var(--text-primary, #e0e0e0);
   min-height: 100vh;
@@ -28,7 +28,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: var(--bg-secondary, rgba(255, 255, 255, 0.06));
+  background: var(--surface-solid, #111);
   border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
   border-radius: 0;
   cursor: pointer;
@@ -49,14 +49,14 @@ body {
   top: calc(100% + 8px);
   right: 0;
   min-width: 200px;
-  background: var(--bg-primary, #0a0a0a);
+  background: var(--surface-solid, #000);
   border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
   border-radius: 0;
   padding: 8px 0;
   display: none;
   flex-direction: column;
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--panel-shadow, 0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
 .theme-options.visible {
@@ -66,7 +66,7 @@ body {
 .theme-option {
   padding: 10px 16px;
   cursor: pointer;
-  background: #000;
+  background: var(--surface-solid, #000);
   color: var(--text-primary, #e0e0e0);
   font-size: 0.9rem;
   transition: all 0.2s ease;
@@ -88,7 +88,7 @@ body {
 .main-header {
   text-align: center;
   padding: 2rem;
-  background: radial-gradient(circle at center, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 70%);
+  background: var(--header-background, radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%));
   transition: background 0.3s ease;
 }
 
@@ -97,6 +97,7 @@ h1 {
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: var(--heading-color, var(--text-primary, #fff));
 }
 
 .accent-text {
@@ -123,14 +124,16 @@ h1 {
 .apps-section, .games-section {
   flex: 1;
   padding: 1.5rem;
-  background: var(--bg-secondary, rgba(255, 255, 255, 0.06));
+  background: var(--panel-background, var(--bg-secondary, rgba(255, 255, 255, 0.06)));
+  border: 1px solid var(--panel-border, var(--border-color, rgba(179, 181, 182, 0.3)));
+  box-shadow: var(--panel-shadow, none);
   border-radius: 0;
   backdrop-filter: blur(8px);
   transition: background 0.3s ease;
 }
 
 .apps-section h2, .games-section h2 {
-  color: var(--text-primary, #fff);
+  color: var(--heading-color, var(--text-primary, #fff));
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -141,6 +144,7 @@ h1 {
   margin-bottom: 0.5rem;
   text-decoration: none;
   color: var(--text-primary, #f7f9fa);
+  background: var(--link-background, transparent);
   border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
   border-radius: 0;
   transition: all 0.2s ease;
@@ -148,6 +152,8 @@ h1 {
 
 .app-link:hover, .app-card:hover {
   background: var(--hover-bg, rgba(0, 212, 255, 0.15));
+  color: var(--link-hover-color, var(--text-primary, #fff));
+  border-color: var(--accent-color, #00d4ff);
   transform: translateY(-2px);
 }
 
@@ -159,15 +165,15 @@ h1 {
 }
 
 .app-card {
-  background: var(--bg-secondary, rgba(255, 255, 255, 0.04));
-  border: 1px solid #333;
+  background: var(--card-background, var(--bg-secondary, rgba(255, 255, 255, 0.04)));
+  border: 1px solid var(--border-color, #333);
 }
 
 .bg-orb {
   position: fixed;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 70%);
+  background: var(--orb-background, radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%));
   border-radius: 0;
   pointer-events: none;
   transition: background 0.3s ease;

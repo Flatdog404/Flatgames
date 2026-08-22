@@ -1,38 +1,44 @@
-/* Ocean Theme - Teal/Water */
+/* Ocean Theme - Deep water and glass */
 :root {
-  --bg-primary: #0f1a2e;
-  --bg-secondary: rgba(76, 153, 220, 0.08);
-  --text-primary: #e8f4f8;
-  --text-secondary: #6b9bbd;
-  --accent-color: #00a8cc;
-  --accent-glow: rgba(0, 168, 204, 0.35);
-  --border-color: rgba(76, 153, 220, 0.4);
-  --hover-bg: rgba(0, 168, 204, 0.18);
+  --bg-primary: #061923;
+  --bg-secondary: rgba(14, 91, 116, 0.3);
+  --text-primary: #e6fbff;
+  --text-secondary: #86bbc5;
+  --accent-color: #48e0d0;
+  --accent-glow: rgba(72, 224, 208, 0.45);
+  --border-color: rgba(72, 224, 208, 0.35);
+  --hover-bg: rgba(72, 224, 208, 0.18);
+  --accent-color-rgb: 72, 224, 208;
+  --font-family: 'Trebuchet MS', sans-serif;
+  --surface-solid: #092633;
+  --panel-background: linear-gradient(135deg, rgba(14, 91, 116, 0.42), rgba(6, 25, 35, 0.72));
+  --card-background: rgba(4, 35, 48, 0.7);
+  --link-background: rgba(72, 224, 208, 0.04);
+  --heading-color: #c5ffff;
+  --panel-border: rgba(72, 224, 208, 0.38);
+  --panel-shadow: 0 14px 35px rgba(0, 5, 12, 0.4);
+  --header-background: radial-gradient(circle at 50% 0%, rgba(72, 224, 208, 0.2), transparent 55%);
+  --orb-background: radial-gradient(circle, rgba(72, 224, 208, 0.18), transparent 68%);
 }
 
 body {
-  font-family: monospace, 'Courier New', Courier, monospace;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-image: linear-gradient(135deg, #061923 0%, #0b3040 48%, #061923 100%);
+  background-attachment: fixed;
 }
 
-.main-header {
-  background: radial-gradient(circle at center, rgba(0, 168, 204, 0.1) 0%, transparent 70%);
-}
-
-.accent-text {
-  color: var(--accent-color);
-  text-shadow: 0 0 20px var(--accent-glow);
+.main-header h1 {
+  letter-spacing: 6px;
 }
 
 .apps-section, .games-section {
-  background: var(--bg-secondary);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
 }
 
-.app-link:hover, .app-card:hover {
-  background: var(--hover-bg);
+.app-link, .app-card {
+  border-radius: 8px;
 }
 
-.bg-orb {
-  background: radial-gradient(circle, rgba(0, 168, 204, 0.12) 0%, transparent 70%);
+.theme-button, .theme-options {
+  border-radius: 10px;
 }

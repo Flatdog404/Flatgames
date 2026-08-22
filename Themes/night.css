@@ -1,38 +1,44 @@
-/* Night Theme - Dark Purple */
+/* Night Theme - Violet observatory */
 :root {
-  --bg-primary: #0d0a14;
-  --bg-secondary: rgba(138, 43, 226, 0.07);
-  --text-primary: #e8dcf0;
-  --text-secondary: #9b85a8;
-  --accent-color: #b967ff;
-  --accent-glow: rgba(185, 103, 255, 0.3);
-  --border-color: rgba(138, 43, 226, 0.35);
-  --hover-bg: rgba(185, 103, 255, 0.15);
+  --bg-primary: #100d1f;
+  --bg-secondary: rgba(80, 52, 140, 0.23);
+  --text-primary: #f4efff;
+  --text-secondary: #aaa0c7;
+  --accent-color: #d5a7ff;
+  --accent-glow: rgba(213, 167, 255, 0.42);
+  --border-color: rgba(213, 167, 255, 0.3);
+  --hover-bg: rgba(213, 167, 255, 0.16);
+  --accent-color-rgb: 185, 103, 255;
+  --font-family: Georgia, serif;
+  --surface-solid: #1d1531;
+  --panel-background: linear-gradient(145deg, rgba(80, 52, 140, 0.32), rgba(16, 13, 31, 0.88));
+  --card-background: rgba(29, 21, 49, 0.8);
+  --link-background: rgba(213, 167, 255, 0.04);
+  --heading-color: #f1e5ff;
+  --panel-border: rgba(213, 167, 255, 0.34);
+  --panel-shadow: 0 18px 42px rgba(0, 0, 0, 0.48);
+  --header-background: radial-gradient(circle at 50% 0%, rgba(213, 167, 255, 0.17), transparent 58%);
+  --orb-background: radial-gradient(circle, rgba(213, 167, 255, 0.15), transparent 68%);
 }
 
 body {
-  font-family: monospace, 'Courier New', Courier, monospace;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-image: radial-gradient(circle at 15% 10%, #2e2050 0, transparent 32%), linear-gradient(155deg, #100d1f, #08070e 70%);
+  background-attachment: fixed;
 }
 
-.main-header {
-  background: radial-gradient(circle at center, rgba(185, 103, 255, 0.06) 0%, transparent 70%);
-}
-
-.accent-text {
-  color: var(--accent-color);
-  text-shadow: 0 0 20px var(--accent-glow);
+.main-header h1 {
+  font-style: italic;
+  letter-spacing: 3px;
 }
 
 .apps-section, .games-section {
-  background: var(--bg-secondary);
+  border-radius: 22px 6px 22px 6px;
 }
 
-.app-link:hover, .app-card:hover {
-  background: var(--hover-bg);
+.app-link, .app-card {
+  border-radius: 6px;
 }
 
-.bg-orb {
-  background: radial-gradient(circle, rgba(185, 103, 255, 0.1) 0%, transparent 70%);
+.theme-button, .theme-options {
+  border-radius: 14px 4px 14px 4px;
 }
