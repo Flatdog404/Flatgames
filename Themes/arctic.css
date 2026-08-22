@@ -1,0 +1,38 @@
+/* Arctic Theme - Light Blue/White */
+:root {
+  --bg-primary: #f0f8ff;
+  --bg-secondary: rgba(135, 206, 250, 0.15);
+  --text-primary: #1a3a4a;
+  --text-secondary: #5c7a9a;
+  --accent-color: #00bfff;
+  --accent-glow: rgba(0, 191, 255, 0.3);
+  --border-color: rgba(135, 206, 250, 0.4);
+  --hover-bg: rgba(0, 191, 255, 0.12);
+}
+
+body {
+  font-family: monospace, 'Courier New', Courier, monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.main-header {
+  background: radial-gradient(circle at center, rgba(0, 191, 255, 0.08) 0%, transparent 70%);
+}
+
+.accent-text {
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.apps-section, .games-section {
+  background: var(--bg-secondary);
+}
+
+.app-link:hover, .app-card:hover {
+  background: var(--hover-bg);
+}
+
+.bg-orb {
+  background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+}

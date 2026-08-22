@@ -1,0 +1,38 @@
+/* Ocean Theme - Teal/Water */
+:root {
+  --bg-primary: #0f1a2e;
+  --bg-secondary: rgba(76, 153, 220, 0.08);
+  --text-primary: #e8f4f8;
+  --text-secondary: #6b9bbd;
+  --accent-color: #00a8cc;
+  --accent-glow: rgba(0, 168, 204, 0.35);
+  --border-color: rgba(76, 153, 220, 0.4);
+  --hover-bg: rgba(0, 168, 204, 0.18);
+}
+
+body {
+  font-family: monospace, 'Courier New', Courier, monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.main-header {
+  background: radial-gradient(circle at center, rgba(0, 168, 204, 0.1) 0%, transparent 70%);
+}
+
+.accent-text {
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.apps-section, .games-section {
+  background: var(--bg-secondary);
+}
+
+.app-link:hover, .app-card:hover {
+  background: var(--hover-bg);
+}
+
+.bg-orb {
+  background: radial-gradient(circle, rgba(0, 168, 204, 0.12) 0%, transparent 70%);
+}

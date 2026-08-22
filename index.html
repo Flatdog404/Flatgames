@@ -7,6 +7,17 @@
 </head>
 <body>
 
+  <!-- Theme dropdown - fixed in top right -->
+  <div class="theme-selector" id="themeSelector">
+    <button class="theme-button" type="button" aria-expanded="false" aria-controls="themeOptions">
+      <span id="themeName">Default</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </button>
+    <div class="theme-options" id="themeOptions"></div>
+  </div>
+
   <!-- Header with title and notes -->
   <header class="main-header">
     <h1><span class="accent-text">flatgames</span></h1>
@@ -30,8 +41,7 @@
 
   </main>
 
-  <!-- Load notes */->
-  <script src="index.js"></script>
+  <script src="themes-loader.js"></script>
 
   <!-- Dynamically load games from /Apps/ folder -->
   <script src="apps-loader.js"></script>

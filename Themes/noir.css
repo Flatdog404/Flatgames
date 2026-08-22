@@ -1,0 +1,38 @@
+/* Noir Theme - High Contrast Black/White */
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --accent-color: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.4);
+  --border-color: rgba(255, 255, 255, 0.3);
+  --hover-bg: rgba(255, 255, 255, 0.15);
+}
+
+body {
+  font-family: monospace, 'Courier New', Courier, monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.main-header {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+}
+
+.accent-text {
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.apps-section, .games-section {
+  background: var(--bg-secondary);
+}
+
+.app-link:hover, .app-card:hover {
+  background: var(--hover-bg);
+}
+
+.bg-orb {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+}
