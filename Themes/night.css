@@ -1,0 +1,44 @@
+/* Night Theme - Violet observatory */
+:root {
+  --bg-primary: #100d1f;
+  --bg-secondary: rgba(80, 52, 140, 0.23);
+  --text-primary: #f4efff;
+  --text-secondary: #aaa0c7;
+  --accent-color: #d5a7ff;
+  --accent-glow: rgba(213, 167, 255, 0.42);
+  --border-color: rgba(213, 167, 255, 0.3);
+  --hover-bg: rgba(213, 167, 255, 0.16);
+  --accent-color-rgb: 185, 103, 255;
+  --font-family: Georgia, serif;
+  --surface-solid: #1d1531;
+  --panel-background: linear-gradient(145deg, rgba(80, 52, 140, 0.32), rgba(16, 13, 31, 0.88));
+  --card-background: rgba(29, 21, 49, 0.8);
+  --link-background: rgba(213, 167, 255, 0.04);
+  --heading-color: #f1e5ff;
+  --panel-border: rgba(213, 167, 255, 0.34);
+  --panel-shadow: 0 18px 42px rgba(0, 0, 0, 0.48);
+  --header-background: radial-gradient(circle at 50% 0%, rgba(213, 167, 255, 0.17), transparent 58%);
+  --orb-background: radial-gradient(circle, rgba(213, 167, 255, 0.15), transparent 68%);
+}
+
+body {
+  background-image: radial-gradient(circle at 15% 10%, #2e2050 0, transparent 32%), linear-gradient(155deg, #100d1f, #08070e 70%);
+  background-attachment: fixed;
+}
+
+.main-header h1 {
+  font-style: italic;
+  letter-spacing: 3px;
+}
+
+.apps-section, .games-section {
+  border-radius: 22px 6px 22px 6px;
+}
+
+.app-link, .app-card {
+  border-radius: 6px;
+}
+
+.theme-button, .theme-options {
+  border-radius: 14px 4px 14px 4px;
+}

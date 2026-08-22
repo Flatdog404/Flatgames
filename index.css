@@ -1,4 +1,4 @@
-/* this is the default css i vibecoded 15 minutes ago*/
+/* Base styles that all themes inherit */
 * {
   margin: 0;
   padding: 0;
@@ -6,19 +6,90 @@
 }
 
 body {
-  font-family: monospace, 'Courier New', Courier, monospace;
-  background-color: #0a0a0a;
-  color: #e0e0e0;
+  font-family: var(--font-family, monospace);
+  background-color: var(--bg-primary, #0a0a0a);
+  color: var(--text-primary, #e0e0e0);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Selector Dropdown */
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface-solid, #111);
+  border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
+  border-radius: 0;
+  cursor: pointer;
+  color: var(--text-primary, #e0e0e0);
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.theme-button:hover {
+  background: var(--hover-bg, rgba(0, 212, 255, 0.15));
+  border-color: var(--accent-color, #00d4ff);
+}
+
+.theme-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--surface-solid, #000);
+  border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
+  border-radius: 0;
+  padding: 8px 0;
+  display: none;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--panel-shadow, 0 4px 20px rgba(0, 0, 0, 0.3));
+}
+
+.theme-options.visible {
+  display: flex;
+}
+
+.theme-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  background: var(--surface-solid, #000);
+  color: var(--text-primary, #e0e0e0);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.theme-option:hover {
+  background: var(--hover-bg, rgba(0, 212, 255, 0.15));
+  border-left-color: var(--accent-color, #00d4ff);
+}
+
+.theme-option.active {
+  background: var(--hover-bg, rgba(0, 212, 255, 0.1));
+  border-left-color: var(--accent-color, #00d4ff);
+  font-weight: bold;
 }
 
 /* Header */
 .main-header {
   text-align: center;
   padding: 2rem;
-  background: radial-gradient(circle at center, rgba(0,212,255,0.08) 0%, transparent 70%);
+  background: var(--header-background, radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%));
+  transition: background 0.3s ease;
 }
 
 h1 {
@@ -26,16 +97,18 @@ h1 {
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: var(--heading-color, var(--text-primary, #fff));
 }
 
 .accent-text {
-  color: #00d4ff;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  color: var(--accent-color, #00d4ff);
+  text-shadow: 0 0 20px var(--accent-glow, rgba(0, 212, 255, 0.4));
+  transition: all 0.3s ease;
 }
 
 #notesSection p {
   line-height: 1.6;
-  color: #aaa;
+  color: var(--text-secondary, #aaa);
   font-size: 1rem;
 }
 
@@ -51,13 +124,16 @@ h1 {
 .apps-section, .games-section {
   flex: 1;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--panel-background, var(--bg-secondary, rgba(255, 255, 255, 0.06)));
+  border: 1px solid var(--panel-border, var(--border-color, rgba(179, 181, 182, 0.3)));
+  box-shadow: var(--panel-shadow, none);
   border-radius: 0;
   backdrop-filter: blur(8px);
+  transition: background 0.3s ease;
 }
 
 .apps-section h2, .games-section h2 {
-  color: #fff;
+  color: var(--heading-color, var(--text-primary, #fff));
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -67,14 +143,17 @@ h1 {
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   text-decoration: none;
-  color: #f7f9fa;
-  border: 1px solid rgba(179, 181, 182, 0.3);
+  color: var(--text-primary, #f7f9fa);
+  background: var(--link-background, transparent);
+  border: 1px solid var(--border-color, rgba(179, 181, 182, 0.3));
   border-radius: 0;
   transition: all 0.2s ease;
 }
 
 .app-link:hover, .app-card:hover {
-  background: rgba(0, 212, 255, 0.15);
+  background: var(--hover-bg, rgba(0, 212, 255, 0.15));
+  color: var(--link-hover-color, var(--text-primary, #fff));
+  border-color: var(--accent-color, #00d4ff);
   transform: translateY(-2px);
 }
 
@@ -86,18 +165,21 @@ h1 {
 }
 
 .app-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid #333;
+  background: var(--card-background, var(--bg-secondary, rgba(255, 255, 255, 0.04)));
+  border: 1px solid var(--border-color, #333);
 }
 
 .bg-orb {
   position: fixed;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  background: var(--orb-background, radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%));
   border-radius: 0;
   pointer-events: none;
+  transition: background 0.3s ease;
 }
 
-.orb-1 { top: -100px; left: -50px; }
-.orb-2 { bottom: -100px; right: -50px; }
+/* Theme switch animation */
+body.theming {
+  opacity: 0.95;
+}

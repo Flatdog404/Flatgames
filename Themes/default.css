@@ -1,0 +1,49 @@
+/* Default Theme - Dark */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: rgba(255, 255, 255, 0.06);
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaa;
+  --accent-color: #00d4ff;
+  --accent-glow: rgba(0, 212, 255, 0.4);
+  --border-color: rgba(179, 181, 182, 0.3);
+  --hover-bg: rgba(0, 212, 255, 0.15);
+  --accent-color-rgb: 0, 212, 255;
+  --font-family: monospace, 'Courier New', Courier, monospace;
+  --surface-solid: #111111;
+  --panel-background: rgba(255, 255, 255, 0.06);
+  --card-background: rgba(255, 255, 255, 0.04);
+  --link-background: rgba(255, 255, 255, 0.02);
+  --heading-color: #ffffff;
+  --panel-border: rgba(179, 181, 182, 0.3);
+  --panel-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --header-background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  --orb-background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+}
+
+body {
+  font-family: monospace, 'Courier New', Courier, monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.main-header {
+  background: radial-gradient(circle at center, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 70%);
+}
+
+.accent-text {
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.apps-section, .games-section {
+  background: var(--bg-secondary);
+}
+
+.app-link:hover, .app-card:hover {
+  background: var(--hover-bg);
+}
+
+.bg-orb {
+  background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 70%);
+}

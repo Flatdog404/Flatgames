@@ -1,0 +1,46 @@
+/* Noir Theme - Editorial monochrome */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #151515;
+  --text-primary: #ffffff;
+  --text-secondary: #a2a2a2;
+  --accent-color: #f2d16b;
+  --accent-glow: rgba(242, 209, 107, 0.35);
+  --border-color: #4b4b4b;
+  --hover-bg: #242424;
+  --accent-color-rgb: 255, 255, 255;
+  --font-family: 'Arial Narrow', Arial, sans-serif;
+  --surface-solid: #111111;
+  --panel-background: #111111;
+  --card-background: #191919;
+  --link-background: #101010;
+  --heading-color: #ffffff;
+  --panel-border: #383838;
+  --panel-shadow: 8px 8px 0 #000;
+  --header-background: linear-gradient(180deg, #1c1c1c, #0a0a0a);
+  --orb-background: radial-gradient(circle, rgba(242, 209, 107, 0.1), transparent 68%);
+}
+
+body {
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0, rgba(255, 255, 255, 0.018) 1px, transparent 1px, transparent 4px), #0a0a0a;
+}
+
+.main-header h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 8px;
+}
+
+.apps-section, .games-section {
+  border: 1px solid #383838;
+}
+
+.app-link, .app-card {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.theme-button, .theme-options {
+  border-radius: 0;
+}
