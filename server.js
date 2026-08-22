@@ -7,6 +7,41 @@ const app = express();
 app.use(express.json());
 
 const rootDirectory = __dirname;
+const messagesPath = path.join(rootDirectory, 'Data', 'messages.txt');
+
+// Chat API
+app.get('/api/messages', async (req, res) => {
+    try {
+        const messages = await fs.readFile(messagesPath, 'utf8');
+        res.type('text/plain').send(messages);
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            res.type('text/plain').send('');
+            return;
+        }
+
+        console.error('ERROR reading messages:', err.message);
+        res.status(500).type('text/plain').send('Unable to load messages.');
+    }
+});
+
+app.post('/api/message', async (req, res) => {
+    const name = typeof req.body?.name === 'string' ? req.body.name.trim() : '';
+    const text = typeof req.body?.text === 'string' ? req.body.text.trim() : '';
+
+    if (!text) {
+        res.status(400).json({ error: 'Message text is required.' });
+        return;
+    }
+
+    try {
+        await handleMessage(`${name || 'Anonymous'}: ${text}`);
+        res.status(201).json({ ok: true });
+    } catch (err) {
+        console.error('ERROR saving message:', err.message);
+        res.status(500).json({ error: 'Unable to save message.' });
+    }
+});
 
 // JSON endpoint for apps list
 app.get('/apps', async (req, res) => {

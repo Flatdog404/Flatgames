@@ -1,9 +1,11 @@
 const fsPromises = require('fs').promises;
+const path = require('path');
 
-const MESSAGES_PATH = 'Data/messages.txt';
+const MESSAGES_PATH = path.join(__dirname, 'Data', 'messages.txt');
 
 async function handleMessage(message) {
   try {
+    await fsPromises.mkdir(path.dirname(MESSAGES_PATH), { recursive: true });
     let data = '';
     try {
       data = await fsPromises.readFile(MESSAGES_PATH, 'utf8');
