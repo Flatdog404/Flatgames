@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
+const os = require('os');
 const { handleMessage } = require('./messageHandler');
 
 const app = express();
@@ -80,4 +81,79 @@ app.use('/themes', express.static(path.join(rootDirectory, 'Themes')));
 app.use(express.static(rootDirectory));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+const HOST = '0.0.0.0';
+const interfaces = os.networkInterfaces();
+const wifiInterface = Object.entries(interfaces).find(([name]) =>
+    /wi-?fi|wlan|wireless/i.test(name) || /^en0$/i.test(name)
+);
+const allNetworkAddresses = Object.values(interfaces)
+    .flat()
+    .filter(address => address && address.family === 'IPv4' && !address.internal)
+    .map(address => address.address);
+const wifiAddress = wifiInterface?.[1]
+    ?.find(address => address.family === 'IPv4' && !address.internal)?.address;
+const networkAddress = wifiAddress || allNetworkAddresses[0];
+
+async function getDirectoryStatus(directory, extension) {
+    try {
+        const files = await fs.readdir(path.join(rootDirectory, directory));
+        const matchingFiles = extension
+            ? files.filter(file => file.toLowerCase().endsWith(extension))
+            : files;
+        return { exists: true, count: matchingFiles.length };
+    } catch {
+        return { exists: false, count: 0 };
+    }
+}
+
+async function getFileStatus(file) {
+    try {
+        await fs.access(path.join(rootDirectory, file));
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+async function reportStartupStatus() {
+    const checks = [
+        ['flatchat.html', getFileStatus('flatchat.html')],
+        ['apps-loader.js', getFileStatus('apps-loader.js')],
+        ['Apps folder', getDirectoryStatus('Apps')],
+        ['Themes folder', getDirectoryStatus('Themes')],
+        ['Data folder', getDirectoryStatus('Data')]
+    ];
+    const results = await Promise.all(checks.map(async ([name, check]) => ({
+        name,
+        result: await check
+    })));
+    const passed = results.filter(({ result }) =>
+        typeof result === 'boolean' ? result : result.exists
+    ).length;
+    const percentage = Math.round((passed / results.length) * 100);
+    const status = percentage === 100 ? 'GOOD' : 'OK';
+
+    console.log(`SERVER: ${status} (${percentage}% of checks passed)`);
+
+    for (const { name, result } of results) {
+        const passedCheck = typeof result === 'boolean' ? result : result.exists;
+        if (!passedCheck) {
+            console.error(`ERROR: Missing ${name}`);
+        }
+    }
+
+    return percentage;
+}
+
+app.listen(PORT, HOST, async () => {
+    await reportStartupStatus();
+    console.log('');
+
+    if (!networkAddress) {
+        console.log(`Hosting check: NO NETWORK ADDRESS FOUND`);
+        console.log(`Hosting locally on http://localhost:${PORT}`);
+        return;
+    }
+
+    console.log(`Hosting: http://${networkAddress}:${PORT}`);
+});

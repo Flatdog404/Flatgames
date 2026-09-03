@@ -10,7 +10,35 @@
     <input type="text" id="messageInput" placeholder="Type a message...">
 
     <script>
-        const displayName = prompt("Enter display name:") || ''
+        const STORAGE_KEY = 'flatgames-display-name'
+
+        function readStoredName() {
+            try {
+                return localStorage.getItem(STORAGE_KEY) || ''
+            } catch (error) {
+                console.warn('Unable to read saved display name:', error)
+                return ''
+            }
+        }
+
+        function saveStoredName(name) {
+            const cleanName = (name || '').trim()
+            try {
+                if (cleanName) {
+                    localStorage.setItem(STORAGE_KEY, cleanName)
+                } else {
+                    localStorage.removeItem(STORAGE_KEY)
+                }
+            } catch (error) {
+                console.warn('Unable to save display name:', error)
+            }
+        }
+
+        const savedName = readStoredName()
+        const displayName = savedName || prompt('Enter display name:') || ''
+        if (displayName) {
+            saveStoredName(displayName)
+        }
 
         async function updateMessages() {
             try {
@@ -32,11 +60,17 @@
                 const input = document.getElementById('messageInput')
                 const text = input.value.trim()
                 if (!text) return
+
+                const currentName = displayName || prompt('Enter display name:') || ''
+                if (currentName) {
+                    saveStoredName(currentName)
+                }
+
                 try {
                     const response = await fetch('/api/message', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name: displayName, text })
+                        body: JSON.stringify({ name: currentName, text })
                     })
                     if (!response.ok) throw new Error('Failed to send message')
                     input.value = ''
